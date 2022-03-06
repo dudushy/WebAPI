@@ -214,9 +214,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Documents\\DriveSync\\GitHub\\WebAPI\\CRUD-API\\CRUD-API.csproj",
-      "projectName": "CRUD-API",
-      "projectPath": "C:\\Users\\User\\Documents\\DriveSync\\GitHub\\WebAPI\\CRUD-API\\CRUD-API.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Documents\\DriveSync\\GitHub\\WebAPI\\CRUD-API\\CRUD.Api.csproj",
+      "projectName": "CRUD.Api",
+      "projectPath": "C:\\Users\\User\\Documents\\DriveSync\\GitHub\\WebAPI\\CRUD-API\\CRUD.Api.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\User\\Documents\\DriveSync\\GitHub\\WebAPI\\CRUD-API\\obj\\",
       "projectStyle": "PackageReference",
