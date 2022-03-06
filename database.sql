@@ -1,15 +1,16 @@
-CREATE DATABASE [dbo.CRUD];
+CREATE DATABASE CRUD;
 
-CREATE TABLE [dbo.tb_users](
+CREATE TABLE tb_users(
     u_cpf           NVARCHAR(11) NOT NULL,
     u_name          NVARCHAR(60) NOT NULL,
+    -- DATE format: YYYY-MM-DD
     u_birth_date    DATE NOT NULL,
     u_email         NVARCHAR(60) NOT NULL,
     u_password      NVARCHAR(30) NOT NULL,
     PRIMARY KEY(u_cpf)
 );
 
-CREATE TABLE [dbo.tb_products](
+CREATE TABLE tb_products(
     pd_id            INT IDENTITY(1, 1),
     pd_name          NVARCHAR(60) NOT NULL,
     pd_desc          NVARCHAR(120) NOT NULL,
@@ -17,9 +18,9 @@ CREATE TABLE [dbo.tb_products](
     PRIMARY KEY(pd_id)
 );
 
-CREATE TABLE [dbo.tb_providers](
+CREATE TABLE tb_providers(
     pv_cnpj          NVARCHAR(14) NOT NULL,
     pv_name          NVARCHAR(60) NOT NULL,
-    pv_reg_date      DATE NOT NULL,
+    pv_reg_date      DATETIME NOT NULL DEFAULT GETDATE(),
     PRIMARY KEY(pv_cnpj)
 );
