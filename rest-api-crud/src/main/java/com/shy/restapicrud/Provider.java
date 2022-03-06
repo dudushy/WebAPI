@@ -1,5 +1,18 @@
 package com.shy.restapicrud;
 
-public class Provider {
+import javax.persistence.Entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class Provider {
+	
+	String Cnpj;
+	String Name;
+	String RegisterDate;
 }
