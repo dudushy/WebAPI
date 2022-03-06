@@ -1,6 +1,6 @@
 CREATE DATABASE [dbo.CRUD];
 
-CREATE TABLE tb_users(
+CREATE TABLE [dbo.tb_users](
     u_cpf           NVARCHAR(11) NOT NULL,
     u_name          NVARCHAR(60) NOT NULL,
     u_birth_date    DATE NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE tb_users(
     PRIMARY KEY(u_cpf)
 );
 
-CREATE TABLE tb_products(
+CREATE TABLE [dbo.tb_products](
     pd_id            INT IDENTITY(1, 1),
     pd_name          NVARCHAR(60) NOT NULL,
     pd_desc          NVARCHAR(120) NOT NULL,
@@ -17,7 +17,7 @@ CREATE TABLE tb_products(
     PRIMARY KEY(pd_id)
 );
 
-CREATE TABLE tb_providers(
+CREATE TABLE [dbo.tb_providers](
     pv_cnpj          NVARCHAR(14) NOT NULL,
     pv_name          NVARCHAR(60) NOT NULL,
     pv_reg_date      DATE NOT NULL,
