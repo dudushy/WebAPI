@@ -32,7 +32,7 @@ namespace CRUD.Api.Controllers
         [HttpGet("{cnpj}")]
         public async Task<ActionResult<Provider>> Read(string cnpj)
         {
-            var provider = providers.Find(pr => pr.Cnpj == cnpj);
+            var provider = providers.Find(pv => pv.Cnpj == cnpj);
 
             if (provider == null)
             {
@@ -63,7 +63,7 @@ namespace CRUD.Api.Controllers
         [HttpPut]
         public async Task<ActionResult<List<Provider>>> Update(Provider request)
         {
-            var provider = providers.Find(pr => pr.Cnpj == request.Cnpj);
+            var provider = providers.Find(pv => pv.Cnpj == request.Cnpj);
 
             if (provider == null)
             {
@@ -81,7 +81,7 @@ namespace CRUD.Api.Controllers
         [HttpDelete("{cnpj}")]
         public async Task<ActionResult<List<Provider>>> Delete(string cnpj)
         {
-            var provider = providers.Find(pr => pr.Cnpj == cnpj);
+            var provider = providers.Find(pv => pv.Cnpj == cnpj);
 
             if (provider == null)
             {
