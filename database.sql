@@ -1,26 +1,25 @@
 CREATE DATABASE CRUD;
 
 CREATE TABLE tb_users(
-    u_cpf           NVARCHAR(11) NOT NULL,
-    u_name          NVARCHAR(60) NOT NULL,
-    -- DATE format: YYYY-MM-DD
-    u_birth_date    DATE NOT NULL,
-    u_email         NVARCHAR(60) NOT NULL,
-    u_password      NVARCHAR(30) NOT NULL,
+    u_cpf           NVARCHAR(11),
+    u_name          NVARCHAR(30),
+    u_birth_date    NVARCHAR(30),
+    u_email         NVARCHAR(30),
+    u_password      NVARCHAR(30),
     PRIMARY KEY(u_cpf)
 );
 
 CREATE TABLE tb_products(
-    pd_id            INT IDENTITY(1, 1),
-    pd_name          NVARCHAR(60) NOT NULL,
-    pd_desc          NVARCHAR(120) NOT NULL,
-    pd_weight        FLOAT NOT NULL,
+    pd_id            INTEGER,
+    pd_name          NVARCHAR(30),
+    pd_desc          NVARCHAR(120),
+    pd_weight        DOUBLE,
     PRIMARY KEY(pd_id)
 );
 
 CREATE TABLE tb_providers(
-    pv_cnpj          NVARCHAR(14) NOT NULL,
-    pv_name          NVARCHAR(60) NOT NULL,
-    pv_reg_date      DATETIME NOT NULL DEFAULT GETDATE(),
+    pv_cnpj          NVARCHAR(14),
+    pv_name          NVARCHAR(30),
+    pv_reg_date      NVARCHAR(30),
     PRIMARY KEY(pv_cnpj)
 );
