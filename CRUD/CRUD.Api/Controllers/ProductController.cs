@@ -23,22 +23,24 @@ namespace CRUD.Api.Controllers
                 }
             };
 
-        // Get All
+        // Read All
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<List<Product>>> Read()
         {
             return Ok(products);
         }
 
-        // Get One
+        // Read One
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Get(int id)
+        public async Task<ActionResult<Product>> Read(int id)
         {
             var product = products.Find(pd => pd.Id == id);
+
             if (product == null)
             {
                 return BadRequest("Product not found.");
             }
+            
             return Ok(product);
         }
 
@@ -55,6 +57,40 @@ namespace CRUD.Api.Controllers
             }
 
             products.Add(product);
+
+            return Ok(products);
+        }
+
+        // Update
+        [HttpPut]
+        public async Task<ActionResult<List<Product>>> Update(Product request)
+        {
+            var product = products.Find(pd => pd.Id == request.Id);
+
+            if (product == null)
+            {
+                return BadRequest("Product not found.");
+            }
+
+            product.Name = request.Name;
+            product.Description = request.Description;
+            product.Weight = request.Weight;
+
+            return Ok(product);
+        }
+
+        // Delete
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<List<Product>>> Delete(int id)
+        {
+            var product = products.Find(pd => pd.Id == id);
+
+            if (product == null)
+            {
+                return BadRequest("Product not found.");
+            }
+
+            products.Remove(product);
 
             return Ok(products);
         }

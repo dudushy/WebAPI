@@ -25,22 +25,24 @@ namespace CRUD.Api.Controllers
                 }
             };
 
-        // Get All
+        // Read All
         [HttpGet]
-        public async Task<ActionResult<List<User>>> Get()
+        public async Task<ActionResult<List<User>>> Read()
         {
             return Ok(users);
         }
 
-        // Get One
+        // Read One
         [HttpGet("{cpf}")]
-        public async Task<ActionResult<User>> Get(string cpf)
+        public async Task<ActionResult<User>> Read(string cpf)
         {
             var user = users.Find(u => u.Cpf == cpf);
+
             if(user == null)
             {
                 return BadRequest("User not found.");
             }
+
             return Ok(user);
         }
 
@@ -57,6 +59,42 @@ namespace CRUD.Api.Controllers
             }
             
             users.Add(user);
+
+            return Ok(users);
+        }
+
+        // Update
+        [HttpPut]
+        public async Task<ActionResult<List<User>>> Update(User request)
+        {
+            var user = users.Find(u => u.Cpf == request.Cpf);
+
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
+            user.Cpf = request.Cpf;
+            user.BirthDate = request.BirthDate;
+            user.Email = request.Email;
+            user.Name = request.Name;
+            user.Password = request.Password;
+
+            return Ok(user);
+        }
+
+        // Delete
+        [HttpDelete("{cpf}")]
+        public async Task<ActionResult<List<User>>> Delete(string cpf)
+        {
+            var user = users.Find(u => u.Cpf == cpf);
+
+            if (user == null)
+            {
+                return BadRequest("User not found.");
+            }
+
+            users.Remove(user);
 
             return Ok(users);
         }

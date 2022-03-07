@@ -25,3 +25,6 @@ C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\obj\Debug\net6.0\r
 C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\obj\Debug\net6.0\CRUD.Api.pdb
 C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\obj\Debug\net6.0\CRUD.Api.genruntimeconfig.cache
 C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\obj\Debug\net6.0\ref\CRUD.Api.dll
+C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
+C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\User\Documents\DriveSync\GitHub\WebAPI\CRUD\CRUD.Api\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll

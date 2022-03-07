@@ -21,22 +21,24 @@ namespace CRUD.Api.Controllers
                 }
             };
 
-        // Get All
+        // Read All
         [HttpGet]
-        public async Task<ActionResult<List<Provider>>> Get()
+        public async Task<ActionResult<List<Provider>>> Read()
         {
             return Ok(providers);
         }
 
-        // Get One
+        // Read One
         [HttpGet("{cnpj}")]
-        public async Task<ActionResult<Provider>> Get(string cnpj)
+        public async Task<ActionResult<Provider>> Read(string cnpj)
         {
             var provider = providers.Find(pr => pr.Cnpj == cnpj);
+
             if (provider == null)
             {
                 return BadRequest("Provider not found.");
             }
+
             return Ok(provider);
         }
 
@@ -53,6 +55,40 @@ namespace CRUD.Api.Controllers
             }
 
             providers.Add(provider);
+
+            return Ok(providers);
+        }
+
+        // Update
+        [HttpPut]
+        public async Task<ActionResult<List<Provider>>> Update(Provider request)
+        {
+            var provider = providers.Find(pr => pr.Cnpj == request.Cnpj);
+
+            if (provider == null)
+            {
+                return BadRequest("Provider not found.");
+            }
+
+            provider.Cnpj = request.Cnpj;
+            provider.Name = request.Name;
+            provider.RegisterDate = request.RegisterDate;
+
+            return Ok(provider);
+        }
+
+        // Delete
+        [HttpDelete("{cnpj}")]
+        public async Task<ActionResult<List<Provider>>> Delete(string cnpj)
+        {
+            var provider = providers.Find(pr => pr.Cnpj == cnpj);
+
+            if (provider == null)
+            {
+                return BadRequest("Provider not found.");
+            }
+
+            providers.Remove(provider);
 
             return Ok(providers);
         }
