@@ -13,7 +13,7 @@ CREATE TABLE tb_products(
     pd_id            INTEGER,
     pd_name          NVARCHAR(30),
     pd_desc          NVARCHAR(120),
-    pd_weight        DOUBLE,
+    pd_weight        FLOAT,
     PRIMARY KEY(pd_id)
 );
 
