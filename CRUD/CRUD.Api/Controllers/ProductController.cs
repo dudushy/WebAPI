@@ -19,12 +19,12 @@ namespace CRUD.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Product>>> Read()
         {
-            return Ok(await _context.Providers.ToListAsync());
+            return Ok(await _context.Products.ToListAsync());
         }
 
         // Read One
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Read(int id)
+        public async Task<ActionResult<Product>> Read(long id)
         {
             var product = await _context.Products.FindAsync(id);
 
@@ -76,7 +76,7 @@ namespace CRUD.Api.Controllers
 
         // Delete
         [HttpDelete("{id}")]
-        public async Task<ActionResult<List<Product>>> Delete(int id)
+        public async Task<ActionResult<List<Product>>> Delete(long id)
         {
             var product = await _context.Products.FindAsync(id);
 
