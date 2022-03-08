@@ -7,32 +7,26 @@ namespace CRUD.Api.Controllers
     [ApiController]
     public class ProviderController : ControllerBase
     {
-        private static List<Provider> providers = new List<Provider>
-            {
-                new Provider {
-                    Cnpj = "12345678901234",
-                    Name = "Dummy Test",
-                    RegisterDate = DateTime.Now.ToString()
-                },
-                new Provider {
-                    Cnpj = "12040578701624",
-                    Name = "Wasd Uldr",
-                    RegisterDate = DateTime.Now.ToString()
-                }
-            };
+        // Inject Data from Database
+        private readonly DataContext _context;
+
+        public ProviderController(DataContext context)
+        {
+            _context = context;
+        }
 
         // Read All
         [HttpGet]
         public async Task<ActionResult<List<Provider>>> Read()
         {
-            return Ok(providers);
+            return Ok(await _context.Providers.ToListAsync());
         }
 
         // Read One
         [HttpGet("{cnpj}")]
         public async Task<ActionResult<Provider>> Read(string cnpj)
         {
-            var provider = providers.Find(pv => pv.Cnpj == cnpj);
+            var provider = await _context.Providers.FindAsync(cnpj);
 
             if (provider == null)
             {
@@ -46,24 +40,25 @@ namespace CRUD.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<List<Provider>>> Create(Provider provider)
         {
-            for (int i = 0; i < providers.Count; i++)
+            for (int i = 0; i < (await _context.Providers.ToListAsync()).Count; i++)
             {
-                if (provider.Cnpj == providers[i].Cnpj)
+                if (provider.Cnpj == (await _context.Providers.ToListAsync())[i].Cnpj)
                 {
                     return BadRequest("CNPJ already in use.");
                 }
             }
 
-            providers.Add(provider);
+            _context.Providers.Add(provider);
+            await _context.SaveChangesAsync();
 
-            return Ok(providers);
+            return Ok(await _context.Providers.ToListAsync());
         }
 
         // Update
         [HttpPut]
         public async Task<ActionResult<List<Provider>>> Update(Provider request)
         {
-            var provider = providers.Find(pv => pv.Cnpj == request.Cnpj);
+            var provider = await _context.Providers.FindAsync(request.Cnpj);
 
             if (provider == null)
             {
@@ -74,23 +69,26 @@ namespace CRUD.Api.Controllers
             provider.Name = request.Name;
             provider.RegisterDate = request.RegisterDate;
 
-            return Ok(provider);
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.Providers.ToListAsync());
         }
 
         // Delete
         [HttpDelete("{cnpj}")]
         public async Task<ActionResult<List<Provider>>> Delete(string cnpj)
         {
-            var provider = providers.Find(pv => pv.Cnpj == cnpj);
+            var provider = await _context.Providers.FindAsync(cnpj);
 
             if (provider == null)
             {
                 return BadRequest("Provider not found.");
             }
 
-            providers.Remove(provider);
+            _context.Providers.Remove(provider);
+            await _context.SaveChangesAsync();
 
-            return Ok(providers);
+            return Ok(await _context.Providers.ToListAsync());
         }
     }
 }
